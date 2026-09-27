@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-ecommerce
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ecommerce
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  product-service:
+    image: product-service:latest
+    container_name: product-service
+    ports:
+      - "3002:3000"
+
+  order-service:
+    image: bookstore-backend:latest
+    container_name: order-service
+    ports:
+      - "3001:3000"
+
+  frontend:
+    image: bookstore-frontend:latest
+    container_name: frontend
+    ports:
+      - "8080:80"
